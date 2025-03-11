@@ -32,7 +32,7 @@ local function get_default_luarocks_binary(rocks_path)
     -- NOTE: On Windows, the binary installed with the luarocks rock is luarocks.bat,
     -- but that doesn't seem to work with vim.system.
     local luarocks_glob =
-        vim.fs.joinpath(rocks_path, "lib", "luarocks", "rocks-5.1", "luarocks", "*", "bin", "luarocks")
+        vim.fs.joinpath(rocks_path, "lib", "luarocks", "rocks-5.4", "luarocks", "*", "bin", "luarocks")
     local default_luarocks_path = vim.fn.glob(luarocks_glob)
     return vim.fn.executable(default_luarocks_path) == 1 and default_luarocks_path or "luarocks"
 end
@@ -251,7 +251,7 @@ local function mk_luarocks_config()
     local machine = machine_map[uname.machine] or uname.machine
     local arch = sysname and machine and ("%s-%s"):format(sysname, machine)
     local default_luarocks_config = {
-        lua_version = "5.1",
+        lua_version = "5.4",
         rocks_trees = {
             {
                 name = "rocks.nvim",
