@@ -33,11 +33,11 @@ end
 -- Set up the Rocks user command
 require("rocks.commands").create_commands()
 
-local env_path_seperator = vim.uv.os_uname().sysname:lower():find("windows") and ";" or ":"
+local env_path_separator = vim.uv.os_uname().sysname:lower():find("windows") and ";" or ":"
 
 -- Append the binary directory to the system path.
 log.trace("Appending luarocks binary directory to the system path")
-vim.env.PATH = vim.fs.joinpath(config.rocks_path, "bin") .. env_path_seperator .. vim.env.PATH
+vim.env.PATH = vim.fs.joinpath(config.rocks_path, "bin") .. env_path_separator .. vim.env.PATH
 
 if not config.lazy then
     log.trace("Populating caches")
@@ -58,7 +58,7 @@ nio.run(function()
 end)
 
 -- Make sure all tree-sitter parsers are on the rtp as soon as possible
-local rocks_tree = vim.fs.joinpath(config.rocks_path, "lib", "luarocks", "rocks-5.1")
+local rocks_tree = vim.fs.joinpath(config.rocks_path, "lib", "luarocks", "rocks-5.4")
 vim.opt.runtimepath:append(vim.fs.joinpath(rocks_tree, "tree-sitter-*", "*"))
 
 --- We don't want to run this async, to ensure proper initialisation order
