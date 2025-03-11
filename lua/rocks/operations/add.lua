@@ -118,7 +118,7 @@ Use 'Rocks %s {rock_name}' or install rocks-git.nvim.
             end
             -- We can't mutate the arg_list, because we may need it for a recursive add
             ---@type string[]
-            local args = #arg_list == 1 and {} or { unpack(arg_list, 2, #arg_list) }
+            local args = #arg_list == 1 and {} or { table.unpack(arg_list, 2, #arg_list) }
             local parse_result = parser.parse_install_args(args)
             if not vim.tbl_isempty(parse_result.invalid_args) then
                 report_error(("invalid %s args: %s"):format(opts.cmd, vim.inspect(parse_result.invalid_args)))
