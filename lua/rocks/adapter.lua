@@ -82,7 +82,7 @@ end
 --- To work around this, we create a symlink in the `rocks_path` that
 --- we add to the runtimepath, so that Neovim can find health files.
 local function init_checkhealth_symlink()
-    local rocks_lua_dir = vim.fs.joinpath(config.rocks_path, "share", "lua", "5.1")
+    local rocks_lua_dir = vim.fs.joinpath(config.rocks_path, "share", "lua", "5.4")
     local _, stat = nio.uv.fs_stat(rocks_lua_dir)
     if stat then
         create_symlink_sync(rtp_link_dir, "lua", rocks_lua_dir)
@@ -107,7 +107,7 @@ end
 ---@param rock RockSpec | Rock
 ---@return string
 local function get_rock_dir(rock)
-    return vim.fs.joinpath(config.rocks_path, "lib", "luarocks", "rocks-5.1", rock.name)
+    return vim.fs.joinpath(config.rocks_path, "lib", "luarocks", "rocks-5.4", rock.name)
 end
 
 ---@param rock Rock
