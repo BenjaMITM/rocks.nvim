@@ -20,7 +20,7 @@ local constants = {}
 
 --- Lua version to be used in luarocks
 ---@type string
-constants.LUA_VERSION = "5.1"
+constants.LUA_VERSION = "5.4"
 
 --- Rocks.nvim version
 ---@type string
