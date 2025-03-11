@@ -111,7 +111,7 @@ local function set_up_luarocks(path)
         "sh",
         "configure",
         "--prefix=" .. path,
-        "--lua-version=5.1",
+        "--lua-version=5.4",
         "--force-config",
     }, {
         cwd = tempdir,
@@ -159,7 +159,7 @@ local supported_arch = rocks_binaries_supported_arch_map[uname.sysname][uname.ma
 
 local install_cmd = {
     luarocks_binary,
-    "--lua-version=5.1",
+    "--lua-version=5.4",
     "--tree=" .. install_path,
     "install",
     "rocks.nvim",
