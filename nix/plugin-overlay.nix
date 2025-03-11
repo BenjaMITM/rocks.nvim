@@ -25,7 +25,7 @@
           sha256 = "1kx7qzdz8rpwsjcp63wwn619nrkxn6xd0nr5pfm3g0z4072nnpzn";
         };
 
-        disabled = luaOlder "5.1";
+        disabled = luaOlder "5.4";
         propagatedBuildInputs = [lua];
       }) {};
 
@@ -52,7 +52,7 @@
             sha256 = "0y3afl42z41ymksk29al5knasmm9wmqzby860x8zj0i0mfb1q5k5";
           };
 
-          disabled = luaOlder "5.1";
+          disabled = luaOlder "5.4";
           propagatedBuildInputs = [lua];
 
           meta = {
@@ -85,7 +85,7 @@
             sha256 = "0bwjcqkb735wqnzc8rngvpq1b2rxgc7m0arjypvnvzsxw6wd1f61";
           };
 
-          disabled = luaOlder "5.1";
+          disabled = luaOlder "5.4";
           propagatedBuildInputs = [lua];
 
           meta = {
@@ -111,7 +111,7 @@
         version = "scm-1";
         knownRockspec = "${self}/rocks.nvim-scm-1.rockspec";
         src = self;
-        disabled = luaOlder "5.1";
+        disabled = luaOlder "5.4";
         propagatedBuildInputs = [
           luarocks
           toml-edit
@@ -122,7 +122,7 @@
         ];
       }) {};
   };
-  lua5_1 = prev.lua5_1.override {
+  lua5_1 = prev.lua5_4.override {
     packageOverrides = luaPackage-override;
   };
   lua51Packages = prev.lua51Packages // final.lua5_1.pkgs;
@@ -132,8 +132,8 @@
   luajitPackages = prev.luajitPackages // final.luajit.pkgs;
 in {
   inherit
-    lua5_1
-    lua51Packages
+    lua5_4
+    lua54Packages
     luajit
     luajitPackages
     ;
@@ -173,14 +173,14 @@ in {
             vim.g.rocks_nvim = rocks_config
 
             local luarocks_path = {
-                vim.fs.joinpath(rocks_config.rocks_path, "share", "lua", "5.1", "?.lua"),
-                vim.fs.joinpath(rocks_config.rocks_path, "share", "lua", "5.1", "?", "init.lua"),
+                vim.fs.joinpath(rocks_config.rocks_path, "share", "lua", "5.4", "?.lua"),
+                vim.fs.joinpath(rocks_config.rocks_path, "share", "lua", "5.4", "?", "init.lua"),
             }
             package.path = package.path .. ";" .. table.concat(luarocks_path, ";")
 
             local luarocks_cpath = {
-                vim.fs.joinpath(rocks_config.rocks_path, "lib", "lua", "5.1", "?.so"),
-                vim.fs.joinpath(rocks_config.rocks_path, "lib64", "lua", "5.1", "?.so"),
+                vim.fs.joinpath(rocks_config.rocks_path, "lib", "lua", "5.4", "?.so"),
+                vim.fs.joinpath(rocks_config.rocks_path, "lib64", "lua", "5.4", "?.so"),
             }
             package.cpath = package.cpath .. ";" .. table.concat(luarocks_cpath, ";")
 
