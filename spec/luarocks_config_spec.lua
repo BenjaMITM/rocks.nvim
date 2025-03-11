@@ -24,7 +24,7 @@ describe("luarocks config", function()
         local luarocks_config = {}
         loadfile(luarocks_config_path, "t", luarocks_config)()
         assert.same({
-            lua_version = "5.1",
+            lua_version = "5.4",
             external_deps_dirs = external_deps_dirs,
             rocks_trees = {
                 { name = "rocks.nvim", root = tempdir },
